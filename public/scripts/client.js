@@ -7,6 +7,7 @@
 // Runs when all HTML elements have been loaded in
 $(document).ready(function () {
 
+    // Event handler for tweet submission
     $('#tweet-form').submit(function(event) {
         event.preventDefault();
 
@@ -24,7 +25,9 @@ $(document).ready(function () {
             $('tweet-form').removeAttr("disabled");
         }
 
+        
         let $data = $(this).serialize();
+        // AJAX post request to /tweets/
         $.ajax({
             url: 'http://localhost:8080/tweets',
             method:'POST',
