@@ -7,10 +7,13 @@
 // Runs when all HTML elements have been loaded in
 $(document).ready(function () {
 
-    $("#error-message").hide();
+    // Initializing variable for error message tag
+    const $errorContainer = $("#error-message");
+    $errorContainer.hide();
+
 
     // Event handler for tweet submission
-    $('#tweet-form').submit(function(event) {
+    $('#tweet-form').on('submit', function(event) {
         event.preventDefault();
 
         const $tweetText = $('#tweet-text');
@@ -18,16 +21,13 @@ $(document).ready(function () {
 
         // form validation for tweets over 140 characters or 0 characters
         if (input.length > 140) {
-            $("#error-message").show();
-                        
-            // $('.button').attr('disabled',true);
-        } else if (input.length=== 0) {
-            $("#error-message").show();
-            alert("Cannot submit empty tweet");
+            $errorContainer.text("Tweet cannot be over 140 characters!")
+            $errorContainer.slideDown();
+        } else if (input.length === 0) {
+            $errorContainer.text("Tweet cannot be empty!")
+            $errorContainer.slideDown();
         } else {
-            // $('.button').removeAttr("disabled");
-            $("#error-message").hide();
-
+            $errorContainer.slideUp();
             let $data = $(this).serialize();
             // AJAX post request to /tweets/
             $.ajax({
@@ -37,28 +37,15 @@ $(document).ready(function () {
             })
             .then((response) => {
                 loadTweets();
-                // $('#tweet-form').val('');
+                $('#tweet-text').val('');
             })
             .catch((error) => {
+                const message = (error.responseJSON && error.responseJSON.error) || error.statusText;
+                $errorContainer.text(message);
+                $errorContainer.slideDown();
                 console.log(error)
             });
         }
-
-        
-        // let $data = $(this).serialize();
-        // // AJAX post request to /tweets/
-        // $.ajax({
-        //     url: 'http://localhost:8080/tweets',
-        //     method:'POST',
-        //     data: $data
-        // })
-        // .then((response) => {
-        //     loadTweets();
-        //     // $('#tweet-form').val('');
-        // })
-        // .catch((error) => {
-        //     console.log(error)
-        // });
     });
 
     const createTweetElement = (tweet) => {
@@ -71,7 +58,7 @@ $(document).ready(function () {
                     </div>
                     <div class="username">${tweet.user.handle}</div>
                 </header>
-                <p class="tweet-body">${tweet.content.text}</p>
+                <p class="tweet-body">${escape(tweet.content.text)}</p>
                 <footer class="tweet-foot">
                     <div class="time-ago">${timeago.format(tweet.created_at)}</div>
                     <div>
