@@ -6,6 +6,29 @@
 
 // Runs when all HTML elements have been loaded in
 $(document).ready(function () {
+
+    const $tweetText = $('#tweet-text');
+    $('#tweet-form').submit(function(event) {
+        event.preventDefault();
+
+        $.ajax({
+            url: 'http://localhost:8080/',
+            method:'POST'
+        })
+        .then((response) => {
+
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+
+
+    });
+
+
+
+
+
     const createTweetElement = (tweet) => {
         const $tweet = $(`
             <article>
@@ -36,6 +59,7 @@ $(document).ready(function () {
     const renderTweets = function (tweets) {
         $('.all-tweets').html('');
         for (const tweet of tweets) {
+        
             let $tweet = createTweetElement(tweet);
             // Using jquery to prepend tweets into the relevant section
             $('.all-tweets').prepend($tweet)

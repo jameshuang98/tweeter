@@ -16,3 +16,4 @@ $(document).ready(function() {
         $counter.html(140 - input.length);
     });
 });
+
