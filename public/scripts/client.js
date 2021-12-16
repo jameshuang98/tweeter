@@ -3,6 +3,8 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
+
+// Runs when all HTML elements have been loaded in
 $(document).ready(function () {
     const createTweetElement = (tweet) => {
         const $tweet = $(`
@@ -30,10 +32,12 @@ $(document).ready(function () {
 
     }
 
+    // Rendering tweets loaded in from an array of tweets
     const renderTweets = function (tweets) {
         $('.all-tweets').html('');
         for (const tweet of tweets) {
             let $tweet = createTweetElement(tweet);
+            // Using jquery to prepend tweets into the relevant section
             $('.all-tweets').prepend($tweet)
         };
 
@@ -55,10 +59,6 @@ $(document).ready(function () {
         },
         "created_at": 1461116232227
     }]
-
-    // const $tweet = createTweetElement(tweetData);
-    // console.log($tweet);
-    // $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
 
     renderTweets(tweetData);
 
