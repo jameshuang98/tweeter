@@ -9,11 +9,26 @@ $(document).ready(function () {
 
     $('#tweet-form').submit(function(event) {
         event.preventDefault();
-        let data = $(this).serialize();
+
+        const $tweetText = $('#tweet-text');
+        const input = $tweetText.val();
+
+        // form validation for tweets over 140 characters or 0 characters
+        if (input.length > 140) {
+            alert("Above 140 characters");
+            $('tweet-form').attr('disabled',true);
+        } else if (input.length === 0) {
+            alert("empty tweet");
+            $('tweet-form').attr('disabled',true);
+        } else {
+            $('tweet-form').removeAttr("disabled");
+        }
+
+        let $data = $(this).serialize();
         $.ajax({
             url: 'http://localhost:8080/tweets',
             method:'POST',
-            data: data
+            data: $data
         })
         .then((response) => {
             console.log("data was posted")
