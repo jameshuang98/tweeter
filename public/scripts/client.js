@@ -7,6 +7,8 @@
 // Runs when all HTML elements have been loaded in
 $(document).ready(function () {
 
+    $("#error-message").hide();
+
     // Event handler for tweet submission
     $('#tweet-form').submit(function(event) {
         event.preventDefault();
@@ -16,30 +18,47 @@ $(document).ready(function () {
 
         // form validation for tweets over 140 characters or 0 characters
         if (input.length > 140) {
-            alert("Above 140 characters");
-            $('tweet-form').attr('disabled',true);
-        } else if (input.length === 0) {
+            $("#error-message").show();
+                        
+            // $('.button').attr('disabled',true);
+        } else if (input.length=== 0) {
+            $("#error-message").show();
             alert("Cannot submit empty tweet");
-            $('tweet-form').attr('disabled',true);
         } else {
-            $('tweet-form').removeAttr("disabled");
+            // $('.button').removeAttr("disabled");
+            $("#error-message").hide();
+
+            let $data = $(this).serialize();
+            // AJAX post request to /tweets/
+            $.ajax({
+                url: 'http://localhost:8080/tweets',
+                method:'POST',
+                data: $data
+            })
+            .then((response) => {
+                loadTweets();
+                // $('#tweet-form').val('');
+            })
+            .catch((error) => {
+                console.log(error)
+            });
         }
 
         
-        let $data = $(this).serialize();
-        // AJAX post request to /tweets/
-        $.ajax({
-            url: 'http://localhost:8080/tweets',
-            method:'POST',
-            data: $data
-        })
-        .then((response) => {
-            loadTweets();
-            // $('#tweet-form').val('');
-        })
-        .catch((error) => {
-            console.log(error)
-        });
+        // let $data = $(this).serialize();
+        // // AJAX post request to /tweets/
+        // $.ajax({
+        //     url: 'http://localhost:8080/tweets',
+        //     method:'POST',
+        //     data: $data
+        // })
+        // .then((response) => {
+        //     loadTweets();
+        //     // $('#tweet-form').val('');
+        // })
+        // .catch((error) => {
+        //     console.log(error)
+        // });
     });
 
     const createTweetElement = (tweet) => {
