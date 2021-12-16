@@ -38,26 +38,79 @@ body {
   width: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   color: #545149;
-  background-color: #f4f1ec;
   padding-top: 50px;
   padding-bottom: 50px;
 }
 
+section article {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #545149;
+  padding: 15px;
+}
 
+section article:hover {
+  box-shadow: 8px 10px #888888;
+}
 
 .tweet-head {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width:100%;
-  
 }
 
 .left-header {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.tweet-author {
+  padding-top: 17px;
+  padding-left: 17px;
+  color: #545149;
+  
+}
+
+.username {
+  padding-top: 17px;
+  color: lightskyblue;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.tweet-body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
+
+.tweet-foot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width:100%;
+  border-top: 3px solid #545149;
+  padding-top: 10px;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.time-ago {
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding-top: 5px;
+}
+
+article i {
+  color: #4056A1;
+  padding-left: 10px;
+  font-size: 20px;
+} 
+
+article i:hover {
+  color: red;
 }
