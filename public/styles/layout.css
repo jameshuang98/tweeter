@@ -87,6 +87,7 @@ section article:hover {
 
 .tweet-body {
   font-family: Verdana, Geneva, Tahoma, sans-serif; 
+  width: 80%;
 }
 
 .tweet-foot {

@@ -97,10 +97,8 @@ $(document).ready(function () {
         return div.innerHTML;
     };
 
+    loadTweets();
 
-
-
-    
 
     // // Test / driver code (temporary). Eventually will get this from the server.
     // const tweetData = [{
