@@ -11,8 +11,8 @@
     font-size: 20px;
     border-bottom: 3px solid #5C4033;
     width: 100%;
-    height: 60px;
-    line-height: 50px;
+    height: 45px;
+    line-height: 22px;
 }
 
 .counter {
@@ -29,4 +29,8 @@
     justify-content: space-between;
     font-family: 'Bungee';
 
+}
+
+.red-text {
+    color: red;
 }
