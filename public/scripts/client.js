@@ -19,7 +19,7 @@ $(document).ready(function () {
             alert("Above 140 characters");
             $('tweet-form').attr('disabled',true);
         } else if (input.length === 0) {
-            alert("empty tweet");
+            alert("Cannot submit empty tweet");
             $('tweet-form').attr('disabled',true);
         } else {
             $('tweet-form').removeAttr("disabled");
@@ -34,7 +34,8 @@ $(document).ready(function () {
             data: $data
         })
         .then((response) => {
-            console.log("data was posted")
+            loadTweets();
+            // $('#tweet-form').val('');
         })
         .catch((error) => {
             console.log(error)
@@ -89,8 +90,17 @@ $(document).ready(function () {
             });
     }
 
-    loadTweets();
+    // Helper function that escapes text
+    const escape = function(str) {
+        let div = document.createElement("div");
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+    };
 
+
+
+
+    
 
     // // Test / driver code (temporary). Eventually will get this from the server.
     // const tweetData = [{
