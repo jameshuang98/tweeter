@@ -11,10 +11,7 @@ $(document).ready(function() {
             $counter.addClass('red-text')
         } else {
             $counter.removeClass('red-text')
-        }
-        $counter.html(140 - input.length)
-        
-        
+        };
+        $counter.html(140 - input.length);
     });
-
 });
