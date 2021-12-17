@@ -31,6 +31,7 @@
   </head>
 
   <body>
+
     <!-- Top nav bar (fixed) -->
     <nav>
       <span class="logo">tweeter  </span>
@@ -40,8 +41,7 @@
       </div>
     </nav>
     
-
-    </div>
+    <!-- Header bar -->
     <header class="header">
       <div>
         <img class="hex-image" src="/images/profile-hex.png"> 
@@ -49,13 +49,10 @@
       <div class="name">
         <span><b>James</b> Huang</span>
       </div>
-    
     </header>
-
 
     <!-- Page-specific (main) content here -->
     <main class="container">
-
       <section class="new-tweet">
         <div id='error-message'></div>
         <form method="POST" action="/tweets/" id="tweet-form">
@@ -67,9 +64,9 @@
             <output id="counter" name="counter" class="counter" for="tweet-text">140</output>
           </div>
         </form>
-
       </section>
 
+      <!-- Section for tweet history -->
       <section class="all-tweets">
       
       </section>
