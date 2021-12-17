@@ -7,6 +7,12 @@
 // Runs when all HTML elements have been loaded in
 $(document).ready(function() {
 
+  // Making the Tweet Form toggable
+  $(".nav-bar").on('click', function() {
+    $(".new-tweet").slideToggle();
+  });
+
+
   // Initializing variable for error message tag
   const $errorContainer = $("#error-message");
   $errorContainer.hide();
@@ -77,7 +83,7 @@ $(document).ready(function() {
 
   // Rendering tweets loaded in from an array of tweets
   const renderTweets = function(tweets) {
-      
+
     // clearing the .all-tweets section between rendering the array of tweets
     $('.all-tweets').html('');
 
