@@ -19,5 +19,11 @@ Tweeter is an AJAX-based, single-page Twitter clone that utilizes jQuery, HTML5,
 
 ## Screenshots
 
+Screenshot of Tweeter home page: 
 !["Screenshot of Tweeter home page"](https://github.com/jameshuang98/tweeter/blob/master/docs/tweeter-home.png?raw=true)
+
+Screenshot of Tweeter home page in a tablet screen size:
 !["Screenshot of Tweeter home page in a tablet screen size"](https://github.com/jameshuang98/tweeter/blob/master/docs/tweeter-tablet-size.png?raw=true)
+
+Screenshot of error message with when submitting a tweet with too many characters:
+!["Screenshot of Tweeter error message"](https://github.com/jameshuang98/tweeter/blob/master/docs/too-many-characters.png?raw=true)
