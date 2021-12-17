@@ -24,10 +24,11 @@ nav {
     flex-direction: column;
     align-items: flex-end;
     align-content: center;
-    padding-right: 4em;
+    margin-right: 4em;
 }
 
 .nav-bar:hover {
+    cursor: pointer;
     animation: bounce 1s infinite alternate;
     -webkit-animation: bounce 1s infinite alternate;
   }

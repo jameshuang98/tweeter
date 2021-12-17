@@ -12,7 +12,6 @@ $(document).ready(function() {
     $(".new-tweet").slideToggle();
   });
 
-
   // Initializing variable for error message tag
   const $errorContainer = $("#error-message");
   $errorContainer.hide();
@@ -24,6 +23,7 @@ $(document).ready(function() {
     const $tweetText = $('#tweet-text');
     const $counter = $('#counter');
     const input = $tweetText.val();
+    console.log($tweetText)
 
     // form validation for tweets over 140 characters or 0 characters
     if (input.length > 140) {
