@@ -17,6 +17,7 @@ $(document).ready(function () {
         event.preventDefault();
 
         const $tweetText = $('#tweet-text');
+        const $counter = $('#counter');
         const input = $tweetText.val();
 
         // form validation for tweets over 140 characters or 0 characters
@@ -37,7 +38,9 @@ $(document).ready(function () {
             })
             .then((response) => {
                 loadTweets();
-                $('#tweet-text').val('');
+                $tweetText.val('');
+                $counter.html(140)
+                
             })
             .catch((error) => {
                 const message = (error.responseJSON && error.responseJSON.error) || error.statusText;
@@ -104,21 +107,4 @@ $(document).ready(function () {
     };
 
     loadTweets();
-
-
-    // // Test / driver code (temporary). Eventually will get this from the server.
-    // const tweetData = [{
-    //     "user": {
-    //         "name": "Newton",
-    //         "avatars": "https://i.imgur.com/73hZDYK.png",
-    //         "handle": "@SirIsaac"
-    //     },
-    //     "content": {
-    //         "text": "If I have seen further it is by standing on the shoulders of giants"
-    //     },
-    //     "created_at": 1461116232227
-    // }]
-
-    // renderTweets(tweetData);
-
 });
