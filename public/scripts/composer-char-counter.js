@@ -13,6 +13,8 @@ $(document).ready(function() {
     } else {
       $counter.removeClass('red-text');
     }
+
+    // Changing counter based on tweet length
     $counter.html(140 - input.length);
   });
 });

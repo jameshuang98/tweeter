@@ -28,6 +28,7 @@ $(document).ready(function() {
       $errorContainer.slideDown();
     } else {
       $errorContainer.slideUp();
+
       let $data = $(this).serialize();
       // AJAX post request to /tweets/
       $.ajax({
@@ -37,9 +38,9 @@ $(document).ready(function() {
       })
         .then((response) => {
           loadTweets();
+          // Resetting form and character counter
           $tweetText.val('');
           $counter.html(140);
-                
         })
         .catch((error) => {
           const message = (error.responseJSON && error.responseJSON.error) || error.statusText;
@@ -50,6 +51,7 @@ $(document).ready(function() {
     }
   });
 
+  // Creating HTML article element with tweet data
   const createTweetElement = (tweet) => {
     const $tweet = $(`
             <article>
@@ -75,8 +77,10 @@ $(document).ready(function() {
 
   // Rendering tweets loaded in from an array of tweets
   const renderTweets = function(tweets) {
+      
     // clearing the .all-tweets section between rendering the array of tweets
     $('.all-tweets').html('');
+
     // loops through tweets
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets container
